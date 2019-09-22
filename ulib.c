@@ -10,8 +10,7 @@ strcpy(char *s, const char *t)
   char *os;
 
   os = s;
-  while((*s++ = *t++) != 0)
-    ;
+  while((*s++ = *t++) != 0);
   return os;
 }
 
@@ -28,10 +27,10 @@ strlen(const char *s)
 {
   int n;
 
-  for(n = 0; s[n]; n++)
-    ;
+  for(n = 0; s[n]; n++);
   return n;
 }
+
 
 void*
 memset(void *dst, int c, uint n)
@@ -104,3 +103,35 @@ memmove(void *vdst, const void *vsrc, int n)
     *dst++ = *src++;
   return vdst;
 }
+
+void
+reverse(char s[]){
+	int i,j;
+	char c;
+	for (i=0,j=strlen(s)-1;i<j;i++,j--){
+		c=s[i];
+		s[i]=s[j];
+		s[j]=c;
+	}
+}
+
+
+
+void
+itoa(int n, char s[]){
+	int i,sign;
+	if((sign=n)<0){
+		n=-n;
+	}
+	i=0;
+	do{
+		s[i++]=n%10+'0';
+	}while((n/10)>0);
+	if(sign<0){
+		s[i++] ='-';
+	}
+	s[i]='\0';
+	reverse(s);
+}
+
+
